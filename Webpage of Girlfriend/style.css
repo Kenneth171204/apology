@@ -1,44 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-  }
-  
-  body {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #d9a6a6;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    gap: 20px;
-    max-width: 500px;
-    margin: 20px;
-  }
-  
-  .container .tenor-gif-embed {
-    max-width: 200px;
-  }
-  
-  .container .btn {
-    display: flex;
-    gap: 25px;
-  }
-  
-  .btn a {
-    text-decoration: none;
-    color: #111;
-    background: #fff;
-    padding: 10px 25px;
-    border-radius: 66px;
-    box-shadow: 0.5rem 1rem 3rem hsl(0, 0%, 0%, 0.3);
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2D1E4A;
+  background: radial-gradient(circle at center, #3b2865 0%, #2D1E4A 100%);
+  color: #f0e6ff;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 25px;
+  max-width: 500px;
+  margin: 20px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(177, 156, 217, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.container .tenor-gif-embed {
+  max-width: 200px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  border-radius: 10px;
+  z-index: 10;
+  position: relative;
+}
+
+.container .tenor-gif-embed:hover {
+  transform: scale(1.15) rotate(3deg);
+  filter: drop-shadow(0 0 25px rgba(177, 156, 217, 0.8));
+}
+
+.container h1 {
+  font-weight: 800;
+  font-size: 2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.container p {
+  font-size: 1.2rem;
+  color: #d8cceb;
+}
+
+.container .btn {
+  display: flex;
+  gap: 25px;
+  margin-top: 10px;
+  position: relative;
+  z-index: 10;
+}
+
+.btn a {
+  text-decoration: none;
+  color: #f0e6ff;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 35px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: 1px solid rgba(177, 156, 217, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.btn a:hover {
+  background: rgba(177, 156, 217, 0.3);
+  border-color: rgba(177, 156, 217, 0.8);
+  box-shadow: 0 0 20px rgba(177, 156, 217, 0.5);
+  transform: translateY(-3px);
+}
+
+.btn a[href*="yes"]:hover {
+  background: rgba(120, 255, 120, 0.2);
+  border-color: rgba(120, 255, 120, 0.6);
+  box-shadow: 0 0 20px rgba(120, 255, 120, 0.4);
+}
+
+.btn a:not([href*="yes"]):not(#move-random):hover {
+  animation: shake 0.5s infinite;
+}
+
+#move-random {
+  transition: top 0.2s ease, left 0.2s ease;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.emoji {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+h1:hover .emoji {
+  animation: wobble 1s ease-in-out infinite;
+}
+
+@keyframes wobble {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(-10deg) scale(1.2); }
+  30% { transform: rotate(10deg) scale(1.2); }
+  45% { transform: rotate(-10deg) scale(1.2); }
+  60% { transform: rotate(10deg) scale(1.2); }
+  75% { transform: rotate(-10deg) scale(1.2); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.heart-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 24px;
+  animation: floatUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  z-index: 100;
+}
+
+@keyframes floatUp {
+  0% { transform: translate(0, 0) scale(0.2) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(var(--rot)); opacity: 0; }
+}
