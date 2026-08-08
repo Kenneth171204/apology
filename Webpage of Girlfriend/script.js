@@ -59,3 +59,39 @@ document.querySelectorAll('.btn a').forEach(link => {
     }, 400);
   });
 });
+
+// Letter Modal Logic
+const letterBtn = document.getElementById('open-letter-btn');
+const letterModal = document.getElementById('letter-modal');
+const envelopeWrapper = document.querySelector('.envelope-wrapper');
+const heartSeal = document.querySelector('.heart-seal');
+const letterCard = document.querySelector('.letter-card');
+
+if (letterBtn) {
+  letterBtn.addEventListener('click', () => {
+    letterModal.classList.add('show');
+  });
+}
+
+if (letterModal) {
+  letterModal.addEventListener('click', (e) => {
+    // Close when clicking overlay (outside envelope/letter)
+    if (e.target === letterModal || e.target.classList.contains('modal-content')) {
+      letterModal.classList.remove('show');
+      // Reset letter state after closing
+      setTimeout(() => {
+        heartSeal.classList.remove('open');
+        letterCard.classList.remove('open');
+      }, 500);
+    }
+  });
+}
+
+if (envelopeWrapper) {
+  envelopeWrapper.addEventListener('click', () => {
+    heartSeal.classList.add('open');
+    setTimeout(() => {
+      letterCard.classList.add('open');
+    }, 300);
+  });
+}
